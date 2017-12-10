@@ -15,6 +15,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/test/{user}', function (User $user) {
-    return $user;
+Route::get('/test/{user?}', function (\App\User $user) {
+    return $user->roles;
 });
