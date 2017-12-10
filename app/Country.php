@@ -10,4 +10,14 @@ class Country extends Model
         'name',
         'sortname',
     ];
+
+    public function posts()
+    {
+        return $this->hasManyThrough('App\Post', 'App\User');
+    }
+
+    public function users()
+    {
+        return $this->hasMany('App\User');
+    }
 }
