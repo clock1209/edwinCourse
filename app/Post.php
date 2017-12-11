@@ -20,4 +20,9 @@ class Post extends Model
     {
         return $this->morphMany('App\Image', 'parent');
     }
+
+    public function tags()
+    {
+        return $this->morphToMany('App\Tag', 'taggable');
+    }
 }
