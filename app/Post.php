@@ -15,4 +15,9 @@ class Post extends Model
     {
         return $this->belongsTo('App\User');
     }
+
+    public function images()
+    {
+        return $this->morphMany('App\Image', 'parent');
+    }
 }

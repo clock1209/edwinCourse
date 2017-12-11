@@ -44,4 +44,9 @@ class User extends Authenticatable
     {
         return $this->belongsTo('App\Country');
     }
+
+    public function images()
+    {
+        return $this->morphMany('App\Image', 'parent');
+    }
 }
