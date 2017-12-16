@@ -15,6 +15,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/test/{user?}', function (\App\User $user) {
-    return $user->roles;
-});
+Route::get('users-data', 'UserController@anyData')
+    ->name('user.data');
+Route::resource('users', 'UserController');

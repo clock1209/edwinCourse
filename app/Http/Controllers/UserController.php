@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use Illuminate\Http\Request;
+use Yajra\DataTables\Facades\DataTables as DT;
 
 class UserController extends Controller
 {
@@ -13,7 +15,19 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        return view('user.index');
+    }
+
+    public function anyData()
+    {
+        return DT::of(User::with('posts'))
+            ->addColumn('posts', function (User $user) {
+                return $user->posts->map(function($post) {
+                    return str_limit($post->title, 20, '...');
+                })->implode('<br>');
+            })
+            ->rawColumns(['posts'])
+            ->make(true);
     }
 
     /**
